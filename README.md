@@ -12,6 +12,19 @@ Into this!
 
 ![WOW](http://i.imgur.com/atCFBp6.png)
 
+# How to install it
+
+```bash
+# Install BP4O in /usr/local
+./install.sh
+
+# Install BP4O in your home directory
+PREFIX=$HOME ./install.sh
+
+# Install BP4O in some directory
+PREFIX=/some/dir ./install.sh
+```
+
 # How it works
 
 It overrides the p4 command with a shell function named p4.
