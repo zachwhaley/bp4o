@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-[ -z $LESS ] && LESS=FRX
+[ -z $LESS ] && LESS=-FRX
 
 if hash colordiff 2>/dev/null; then
     $@ | colordiff | less

@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
-[ -z $LESS ] && LESS=FRX
+[ -z $LESS ] && LESS=-FRX
 
 $@ | less
