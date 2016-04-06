@@ -16,7 +16,7 @@ Into this!
 
 ```bash
 # Install BP4O in /usr/local
-./install.sh
+sudo ./install.sh
 
 # Install BP4O in your home directory
 PREFIX=$HOME ./install.sh
