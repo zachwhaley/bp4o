@@ -43,10 +43,13 @@ for line in out.split('\n'):
     m = re.match('(.+) - (currently )?opened for add', line)
     if m:
         files.append(m.group(1))
+    elif line:
+        print line
 
-print '\nOpened for add'
-for file in files:
-    print '\t{}{}{}'.format(colors.GREEN, file, colors.OFF)
-print ''
+if files:
+    print '\nOpened for add'
+    for file in files:
+        print '\t{}{}{}'.format(colors.GREEN, file, colors.OFF)
+    print ''
 
 sys.exit(child.returncode)

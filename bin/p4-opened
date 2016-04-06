@@ -52,6 +52,8 @@ for line in out.split('\n'):
         if cl not in changes:
             changes[cl] = list()
         changes[cl].append(p4file(name=m.group(1), stat=m.group(2), type=m.group(5)))
+    elif line:
+        print line
 
 if changes:
     for cl, files in changes.iteritems():

@@ -43,10 +43,13 @@ for line in out.split('\n'):
     m = re.match('(.+) - (currently )?opened for edit', line)
     if m:
         files.append(m.group(1))
+    elif line:
+        print line
 
-print '\nOpened for edit'
-for file in files:
-    print '\t{}{}{}'.format(colors.YELLOW, file, colors.OFF)
-print ''
+if files:
+    print '\nOpened for edit'
+    for file in files:
+        print '\t{}{}{}'.format(colors.YELLOW, file, colors.OFF)
+    print ''
 
 sys.exit(child.returncode)

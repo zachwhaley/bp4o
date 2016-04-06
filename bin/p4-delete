@@ -39,24 +39,17 @@ if not sys.stdout.isatty():
     colorsoff()
 
 files = []
-errors = []
 for line in out.split('\n'):
     m = re.match('(.+) - (currently )?opened for delete', line)
-    e = re.match("(.+) - can't delete (.+)", line)
     if m:
         files.append(m.group(1))
-    elif e:
-        errors.append( (e.group(1), e.group(2)) )
+    elif line:
+        print line
 
-print '\nOpened for delete'
-for file in files:
-    print '\t{}{}{}'.format(colors.RED, file, colors.OFF)
-print ''
-
-if errors:
-    print 'Cannot delete'
-    for err in errors:
-        print '\t{} - {}'.format(*err)
+if files:
+    print '\nOpened for delete'
+    for file in files:
+        print '\t{}{}{}'.format(colors.RED, file, colors.OFF)
     print ''
 
 sys.exit(child.returncode)
