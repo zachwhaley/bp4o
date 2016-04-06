@@ -17,5 +17,6 @@ install -v -m 0444 bp4o.sh "$prefix/share/bp4o.sh"
 echo "
 BP4O Installed!
 Now add the following to your shell's rc file to setup BP4O on login
-[-f $prefix/share/bp4o.sh] && source $prefix/share/bp4o.sh
+
+[ -f $prefix/share/bp4o.sh ] && source $prefix/share/bp4o.sh
 "
