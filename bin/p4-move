@@ -42,7 +42,7 @@ move = []
 for line in out.split('\n'):
     m = re.match('(.+) - moved from (.+)', line)
     if m:
-        move.append( (m.group(2), m.group(1)))
+        move.append( (m.group(2), m.group(1)) )
 
 print '\nOpened for move'
 for mv in move:
