@@ -6,11 +6,11 @@ A bunch of scripts to catch p4 commands, run them, and make their output better.
 
 It turns output like this...
 
-![meh](http://imgur.com/euoNBOw)
+![meh](http://i.imgur.com/euoNBOw.png)
 
 Into this!
 
-![WOW](http://imgur.com/atCFBp6)
+![WOW](http://i.imgur.com/atCFBp6.png)
 
 # How it works
 
