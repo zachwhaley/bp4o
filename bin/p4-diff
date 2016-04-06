@@ -1,5 +1,1 @@
-#!/usr/bin/env sh
-
-[ -z $LESS ] && LESS=-FRX
-
-$@ | less
+bp4o-less

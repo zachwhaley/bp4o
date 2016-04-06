@@ -8,7 +8,7 @@ fi
 mkdir -p $prefix/bin $prefix/share
 
 rm -rf $prefix/bin/p4-*
-for b in bin/*; do
+for b in bin/p4-*; do
     install -v $b "$prefix/$b"
 done
 rm -rf $prefix/share/bp4o.sh
