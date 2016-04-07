@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 [ -z "$LESS" ] && LESS=-FRX
-if hash colordiff 2>/dev/null; then
+if type colordiff 1>/dev/null; then
     $@ | colordiff | less
 else
     $@ | less
