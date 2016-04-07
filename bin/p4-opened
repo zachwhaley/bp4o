@@ -50,7 +50,7 @@ for line in out.split('\n'):
     if m:
         cl = m.group(4) if m.group(4) else 'default'
         if cl not in changes:
-            changes[cl] = list()
+            changes[cl] = []
         changes[cl].append(p4file(name=m.group(1), stat=m.group(2), type=m.group(5)))
     elif line:
         print line
