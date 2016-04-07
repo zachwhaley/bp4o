@@ -1,17 +1,16 @@
 #!/usr/bin/env sh
-set -eu
+set -e
 
 prefix="/usr/local"
-if [ -n "${PREFIX:-}" ]; then
-    prefix=${PREFIX:-}
-fi
-mkdir -p $prefix/bin $prefix/share
+[ -n $1 ] && prefix=$1
 
 rm -rf $prefix/bin/p4-*
+rm -rf $prefix/share/bp4o.sh
+
+mkdir -p $prefix/bin $prefix/share
 for b in bin/p4-*; do
     install -v $b "$prefix/$b"
 done
-rm -rf $prefix/share/bp4o.sh
 install -v -m 0444 bp4o.sh "$prefix/share/bp4o.sh"
 
 echo "
