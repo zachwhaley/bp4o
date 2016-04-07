@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+OFF=$'\e[0;0m'
+YELLOW=$'\e[0;33m'
+
+[ -z "$LESS" ] && LESS=-FRX
+
+cmd="$1 changes -s submitted -l ${@:2}"
+if [ -t 1 ]; then
+    $cmd | sed -r "s/(Change .+)/$YELLOW\1$OFF/g" | less
+else
+    $cmd
+fi
+
+exit ${PIPESTATUS[0]}
