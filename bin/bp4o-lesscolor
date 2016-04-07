@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eo pipefail
 
 [ -z "$LESS" ] && LESS=-FRX
 if type colordiff 1>/dev/null; then
@@ -6,4 +7,4 @@ if type colordiff 1>/dev/null; then
 else
     $@ | less
 fi
-exit ${PIPESTATUS[0]}
+exit $?

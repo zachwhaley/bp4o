@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
+set -eo pipefail
 
 [ -z "$LESS" ] && LESS=-FRX
 $@ | less
-exit ${PIPESTATUS[0]}
+exit $?

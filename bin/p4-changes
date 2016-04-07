@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eo pipefail
 
 OFF=$'\033[0;0m'
 BOLD=$'\033[0;1m'
@@ -19,4 +20,4 @@ else
     $@ | less
 fi
 
-exit ${PIPESTATUS[0]}
+exit $?
