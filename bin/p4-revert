@@ -1,0 +1,69 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import re
+import sys
+import subprocess
+
+class colors:
+    OFF     = '\033[0;0m'
+    BOLD    = '\033[0;1m'
+    BLACK   = '\033[0;30m'
+    RED     = '\033[0;31m'
+    GREEN   = '\033[0;32m'
+    YELLOW  = '\033[0;33m'
+    BLUE    = '\033[0;34m'
+    MAGENTA = '\033[0;35m'
+    CYAN    = '\033[0;36m'
+    WHITE   = '\033[0;37m'
+
+def colorsoff():
+    colors.OFF     = ''
+    colors.BOLD    = ''
+    colors.BLACK   = ''
+    colors.RED     = ''
+    colors.GREEN   = ''
+    colors.YELLOW  = ''
+    colors.BLUE    = ''
+    colors.MAGENTA = ''
+    colors.CYAN    = ''
+    colors.WHITE   = ''
+
+child = subprocess.Popen(sys.argv[1:], stdout=subprocess.PIPE)
+(out, err) = child.communicate()
+if child.returncode != 0:
+    sys.exit(child.returncode)
+
+# Turn off colors if stdout is being piped or redirected
+if not sys.stdout.isatty():
+    colorsoff()
+
+reverts = {}
+for line in out.split('\n'):
+    m = re.match('(.+) - was (.+), (.+)', line)
+    if m:
+        rv = m.group(3)
+        if rv not in reverts:
+            reverts[rv] = []
+        reverts[rv].append( (m.group(1), m.group(2)) )
+    elif line:
+        print line
+
+if reverts:
+    for rv, files in reverts.iteritems():
+        print '\n{}'.format(rv.title())
+        statlen = 0
+        for (name, stat) in files:
+            statlen = max(statlen, len(stat))
+        for (name, stat) in files:
+            color = colors.OFF
+            if 'edit' in stat:
+                color = colors.YELLOW
+            elif 'add' in stat:
+                color = colors.GREEN
+            elif 'delete' in stat:
+                color = colors.RED
+            print '\t{}{: <{statlen}} {}{}'.format(color, stat, name, colors.OFF, statlen=statlen)
+    print ''
+
+sys.exit(child.returncode)
