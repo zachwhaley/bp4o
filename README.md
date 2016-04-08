@@ -19,10 +19,10 @@ Into this!
 sudo ./install.sh
 
 # Install BP4O in your home directory
-PREFIX=$HOME ./install.sh
+./install.sh ~
 
 # Install BP4O in some directory
-PREFIX=/some/dir ./install.sh
+./install.sh /some/dir
 ```
 
 # How it works
