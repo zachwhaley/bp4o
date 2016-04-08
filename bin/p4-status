@@ -45,28 +45,38 @@ if not sys.stdout.isatty():
     colorsoff()
 
 unopened = []
+opened = {}
 for line in out.split('\n'):
-    m = re.match(r'.+ - reconcile to (.+) (.+)', line)
+    m = re.match(r'.+ - (reconcile|submit.+) to (.+) (.+)', line)
     if m:
-        st = m.group(1)
-        if st == 'move/delete':
-            continue
-        elif st == 'move/add':
-            st = 'move'
-        unopened.append(p4file(m.group(2), st))
+        chnum = m.group(1)
+        stat = m.group(2)
+        name = m.group(3)
+        if 'reconcile' in chnum:
+            if stat == 'move/delete':
+                continue
+            elif stat == 'move/add':
+                stat = 'move'
+            unopened.append(p4file(name, stat))
+        elif 'submit' in chnum:
+            s = re.search(r'change (.+)', chnum)
+            if s:
+                chnum = s.group(1)
+                if chnum not in opened:
+                    opened[chnum] = []
+                opened[chnum].append(p4file(name, stat))
     elif line:
-        m = re.match(r'^\.\.\. moved from (.+)', line)
+        m = re.match(r'\.\.\. moved from (.+)', line)
         if m:
             unopened[-1].mvfrom = m.group(1)
         else:
             print line
 
-if unopened:
-    print '\n{}[ Unopened ]{}'.format(colors.BOLD, colors.OFF)
+def print_files(files):
     statlen = 0
-    for f in unopened:
+    for f in files:
         statlen = max(statlen, len(f.stat))
-    for f in unopened:
+    for f in files:
         color = colors.OFF
         if 'edit' in f.stat:
             color = colors.YELLOW
@@ -75,9 +85,21 @@ if unopened:
         elif 'delete' in f.stat:
             color = colors.RED
         if f.mvfrom:
-            print '\t{}{: <{statlen}} {}{}{} -> {}{}{}'.format(colors.YELLOW, 'move', colors.RED, f.mvfrom, colors.OFF, colors.GREEN, f.name, colors.OFF, statlen=statlen)
+            print '\t{}{: <{statlen}} {}{}{} -> {}{}{}'.format(colors.YELLOW, f.stat,
+                                                               colors.RED, f.mvfrom, colors.OFF,
+                                                               colors.GREEN, f.name, colors.OFF,
+                                                               statlen=statlen)
         else:
             print '\t{}{: <{statlen}} {}{}'.format(color, f.stat, f.name, colors.OFF, statlen=statlen)
+
+if unopened:
+    print '\n{}[ unopened ]{}'.format(colors.BOLD, colors.OFF)
+    print_files(unopened)
+if opened:
+    for chnum, files in opened.iteritems():
+        print '\n{}[ {} ]{}'.format(colors.BOLD, chnum, colors.OFF)
+        print_files(files)
+if unopened or opened:
     print ''
 
 sys.exit(child.returncode)
