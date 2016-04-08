@@ -1,0 +1,83 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import re
+import sys
+import subprocess
+
+class colors:
+    OFF     = '\033[0;0m'
+    BOLD    = '\033[0;1m'
+    BLACK   = '\033[0;30m'
+    RED     = '\033[0;31m'
+    GREEN   = '\033[0;32m'
+    YELLOW  = '\033[0;33m'
+    BLUE    = '\033[0;34m'
+    MAGENTA = '\033[0;35m'
+    CYAN    = '\033[0;36m'
+    WHITE   = '\033[0;37m'
+
+def colorsoff():
+    colors.OFF     = ''
+    colors.BOLD    = ''
+    colors.BLACK   = ''
+    colors.RED     = ''
+    colors.GREEN   = ''
+    colors.YELLOW  = ''
+    colors.BLUE    = ''
+    colors.MAGENTA = ''
+    colors.CYAN    = ''
+    colors.WHITE   = ''
+
+class p4file():
+    mvfrom = ''
+    def __init__(self, name, stat):
+        self.name = name
+        self.stat = stat
+
+child = subprocess.Popen(sys.argv[1:], stdout=subprocess.PIPE)
+(out, err) = child.communicate()
+if child.returncode != 0:
+    sys.exit(child.returncode)
+
+# Turn off colors if stdout is being piped or redirected
+if not sys.stdout.isatty():
+    colorsoff()
+
+unopened = []
+for line in out.split('\n'):
+    m = re.match(r'.+ - reconcile to (.+) (.+)', line)
+    if m:
+        st = m.group(1)
+        if st == 'move/delete':
+            continue
+        elif st == 'move/add':
+            st = 'move'
+        unopened.append(p4file(m.group(2), st))
+    elif line:
+        m = re.match(r'^\.\.\. moved from (.+)', line)
+        if m:
+            unopened[-1].mvfrom = m.group(1)
+        else:
+            print line
+
+if unopened:
+    print '\n{}[ Unopened ]{}'.format(colors.BOLD, colors.OFF)
+    statlen = 0
+    for f in unopened:
+        statlen = max(statlen, len(f.stat))
+    for f in unopened:
+        color = colors.OFF
+        if 'edit' in f.stat:
+            color = colors.YELLOW
+        elif 'add' in f.stat:
+            color = colors.GREEN
+        elif 'delete' in f.stat:
+            color = colors.RED
+        if f.mvfrom:
+            print '\t{}{: <{statlen}} {}{}{} -> {}{}{}'.format(colors.YELLOW, 'move', colors.RED, f.mvfrom, colors.OFF, colors.GREEN, f.name, colors.OFF, statlen=statlen)
+        else:
+            print '\t{}{: <{statlen}} {}{}'.format(color, f.stat, f.name, colors.OFF, statlen=statlen)
+    print ''
+
+sys.exit(child.returncode)
