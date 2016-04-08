@@ -16,6 +16,7 @@ class colors:
     MAGENTA = '\033[0;35m'
     CYAN    = '\033[0;36m'
     WHITE   = '\033[0;37m'
+    REDBOLD = '\033[1;31m'
 
 def colorsoff():
     colors.OFF     = ''
@@ -28,6 +29,7 @@ def colorsoff():
     colors.MAGENTA = ''
     colors.CYAN    = ''
     colors.WHITE   = ''
+    colors.REDBOLD = ''
 
 class p4file():
     mvfrom = ''
@@ -92,13 +94,13 @@ def print_files(files):
         else:
             print '\t{}{: <{statlen}} {}{}'.format(color, f.stat, f.name, colors.OFF, statlen=statlen)
 
-if unopened:
-    print '\n{}[ unopened ]{}'.format(colors.BOLD, colors.OFF)
-    print_files(unopened)
 if opened:
     for chnum, files in opened.iteritems():
         print '\n{}[ {} ]{}'.format(colors.BOLD, chnum, colors.OFF)
         print_files(files)
+if unopened:
+    print '\n{}[ unopened ]{}'.format(colors.REDBOLD, colors.OFF)
+    print_files(unopened)
 if unopened or opened:
     print ''
 
