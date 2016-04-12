@@ -40,7 +40,7 @@ if not sys.stdout.isatty():
 
 move = []
 for line in out.split('\n'):
-    m = re.match('(.+) - moved from (.+)', line)
+    m = re.match(r'(.+) - moved from (.+)', line)
     if m:
         move.append(m.groups())
     elif line:

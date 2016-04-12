@@ -40,7 +40,7 @@ if not sys.stdout.isatty():
 
 files = []
 for line in out.split('\n'):
-    m = re.match('(.+) - (currently )?opened for edit', line)
+    m = re.match(r'(.+) - (currently )?opened for edit', line)
     if m:
         files.append(m.group(1))
     elif line:
