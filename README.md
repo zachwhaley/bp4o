@@ -25,6 +25,22 @@ sudo ./install.sh
 ./install.sh /some/dir
 ```
 
+# Aliases!
+
+BP4O allows you to create aliases for p4 commands
+
+Add a file named `aliases` to `$XDG_CONFIG_HOME/bp4o/` or `~/.config/bp4o/`.
+Each line of the file is treated as an alias with the syntax `<alias> = <command>`.
+
+e.g.
+
+```shell
+ch = change
+op = opened
+su = submit
+log = changes -s pending -l
+```
+
 # How it works
 
 It overrides the p4 command with a shell function named p4.
