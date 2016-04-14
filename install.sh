@@ -3,7 +3,8 @@ set -e
 
 prefix="/usr/local"
 [ -n "$1" ] && prefix=$1
-data="${XDG_DATA_HOME:=$HOME/.local/share}/bp4o"
+data="/usr/local/share/bp4o"
+[ $(whoami) != "root" ] && data="${XDG_DATA_HOME:=$HOME/.local/share}/bp4o"
 
 rm -rf $prefix/bin/p4-*
 rm -rf $data/init.*
