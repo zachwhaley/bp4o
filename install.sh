@@ -17,9 +17,10 @@ for i in init.*; do
     install -v -m 0444 $i "$data/$i"
 done
 
+init="${data/#$HOME/~}/init.${SHELL##*/}"
 echo "
 BP4O Installed!
 Now add the following to your shell's rc file to setup BP4O on login
 
-[ -f $data/init.${SHELL##*/} ] && source $data/init.${SHELL##*/}
+[ -f $init ] && source $init
 "
