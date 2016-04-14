@@ -29,7 +29,12 @@ def colorsoff():
     colors.CYAN    = ''
     colors.WHITE   = ''
 
-child = subprocess.Popen(sys.argv[1:], stdout=subprocess.PIPE)
+# Support python 2.7.6
+args = []
+for arg in sys.argv:
+    args += arg.split()
+
+child = subprocess.Popen(args[1:], stdout=subprocess.PIPE)
 (out, err) = child.communicate()
 if child.returncode != 0:
     sys.exit(child.returncode)

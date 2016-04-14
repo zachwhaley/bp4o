@@ -37,7 +37,12 @@ class p4file():
         self.name = name
         self.stat = stat
 
-child = subprocess.Popen(sys.argv[1:], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+# Support python 2.7.6
+args = []
+for arg in sys.argv:
+    args += arg.split()
+
+child = subprocess.Popen(args[1:], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 (out, err) = child.communicate()
 if not out:
     sys.stderr.write(err)
