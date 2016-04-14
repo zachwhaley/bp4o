@@ -38,7 +38,7 @@ e.g.
 ch = change
 op = opened
 su = submit
-log = changes -s pending -l
+log = changes -s submitted -l
 ```
 
 # How it works
