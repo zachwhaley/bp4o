@@ -17,7 +17,7 @@ for i in init.*; do
     install -v -m 0444 $i "$share/$i"
 done
 
-init="${share/#$HOME/~}/init.${SHELL##*/}"
+init="${share/#$HOME/'~'}/init.${SHELL##*/}"
 echo "
 BP4O Installed!
 Now add the following to your shell's rc file to setup BP4O on login
