@@ -3,7 +3,7 @@ set -e
 
 prefix="/usr/local"
 [ -n "$1" ] && prefix="$1"
-share="/usr/local/share/bp4o"
+share="$prefix/share/bp4o"
 [ $(whoami) != "root" ] && share="${XDG_DATA_HOME:=$HOME/.local/share}/bp4o"
 
 rm -rf $prefix/bin/p4-*
