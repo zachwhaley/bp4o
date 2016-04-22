@@ -51,7 +51,7 @@ if not sys.stdout.isatty():
 
 changes = {}
 for line in out.split('\n'):
-    m = re.match(r'(.+) - (.+) (default change|change (.+)) (.+)', line)
+    m = re.match(r'(.+) - (.+) (default change|change ([0-9]+)) (.+)', line)
     if m:
         cl = m.group(4) if m.group(4) else 'default'
         if cl not in changes:
