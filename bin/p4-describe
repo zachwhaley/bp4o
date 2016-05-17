@@ -1,1 +1,10 @@
-bp4o-lesscolor
+#!/usr/bin/env bash
+set -eo pipefail
+
+export LESS=${LESS-"-FRX"}
+if type colordiff &>/dev/null; then
+    $@ | colordiff | less
+else
+    $@ | less
+fi
+exit $?

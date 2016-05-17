@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-[ -z "$LESS" ] && LESS=-FRX
+export LESS=${LESS-"-FRX"}
+if type colordiff &>/dev/null; then
+    export P4DIFF=${P4DIFF-colordiff}
+fi
 $@ | less
 exit $?
