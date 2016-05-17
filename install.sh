@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 set -e
 
 prefix="/usr/local"
@@ -17,7 +17,14 @@ for i in init.*; do
     install -v -m 0444 $i "$share/$i"
 done
 
-init="${share/#$HOME/'~'}/init.${SHELL##*/}"
+# Bash 4 expands ~ to the home directory, but Bash 3 doesn't.
+# Unfortunately Bash 3 prints '~' literally, while Bash 4 prints only ~
+if [ ${BASH_VERSION%%\.[1-9]*} -ge 4 ]; then
+    share="${share/#$HOME/'~'}"
+else
+    share="${share/#$HOME/~}"
+fi
+init="$share/init.${SHELL##*/}"
 echo "
 BP4O Installed!
 Now add the following to your shell's rc file to setup BP4O on login
