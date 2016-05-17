@@ -25,6 +25,14 @@ sudo ./install.sh
 ./install.sh /some/dir
 ```
 
+# Colored Diffs
+
+BP4O will use [colordiff](http://www.colordiff.org/) to output diffs in color from commands like `p4 describe`
+
+![colordiff](http://i.imgur.com/5jGjV7K.png)
+
+Colordiff can be intalled on most Linux/BSD distributions.
+
 # Aliases!
 
 BP4O allows you to create aliases for p4 commands
