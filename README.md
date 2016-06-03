@@ -4,6 +4,8 @@ A bunch of scripts to catch p4 commands, run them, and make their output better.
 
 # What it does
 
+## Better Ouput!
+
 It turns output like this...
 
 ![meh](http://i.imgur.com/euoNBOw.png)
@@ -12,20 +14,7 @@ Into this!
 
 ![WOW](http://i.imgur.com/atCFBp6.png)
 
-# How to install it
-
-```bash
-# Install BP4O in /usr/local
-sudo ./install.sh
-
-# Install BP4O in your home directory
-./install.sh ~
-
-# Install BP4O in some directory
-./install.sh /some/dir
-```
-
-# Colored Diffs
+## Colored Diffs!
 
 BP4O will use [colordiff](http://www.colordiff.org/) to output diffs in color from commands like `p4 describe`
 
@@ -33,7 +22,7 @@ BP4O will use [colordiff](http://www.colordiff.org/) to output diffs in color fr
 
 Colordiff can be intalled on most Linux/BSD distributions.
 
-# Aliases!
+## Aliases!
 
 BP4O allows you to create aliases for p4 commands
 
@@ -47,6 +36,19 @@ ch = change
 op = opened
 su = submit
 log = changes -s submitted -l
+```
+
+# How to install it
+
+```bash
+# Install BP4O in /usr/local
+sudo ./install.sh
+
+# Install BP4O in your home directory
+./install.sh ~
+
+# Install BP4O in some directory
+./install.sh /some/dir
 ```
 
 # How it works
