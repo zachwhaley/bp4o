@@ -9,7 +9,7 @@ p4() {
     fi
 
     p4bin=$(type -P p4)
-    if type p4-$cmd &>/dev/null; then
+    if which p4-$cmd &>/dev/null; then
         p4-$cmd $p4bin ${cmd[@]}
     else
         $p4bin ${cmd[@]}

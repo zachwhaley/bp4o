@@ -2,7 +2,7 @@
 set -eo pipefail
 
 export LESS=${LESS-"-FRX"}
-if type colordiff &>/dev/null; then
+if which colordiff &>/dev/null; then
     export P4DIFF=${P4DIFF-colordiff}
 fi
 $@ | less
