@@ -76,6 +76,10 @@ if changes:
                 color = colors.GREEN
             elif 'delete' in f.stat:
                 color = colors.RED
+            elif 'branch' in f.stat:
+                color = colors.MAGENTA
+            elif 'integrate' in f.stat:
+                color = colors.CYAN
             print '\t{}{: <{statlen}} {: <{namelen}}{} {}'.format(color, f.stat, f.name, colors.OFF, f.type, statlen=statlen, namelen=namelen)
     print ''
 

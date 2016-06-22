@@ -93,6 +93,10 @@ def print_files(files):
             color = colors.GREEN
         elif 'delete' in f.stat:
             color = colors.RED
+        elif 'branch' in f.stat:
+            color = colors.MAGENTA
+        elif 'integrate' in f.stat:
+            color = colors.CYAN
         if f.mvfrom:
             print '\t{}{: <{statlen}} {}{}{} -> {}{}{}'.format(colors.YELLOW, f.stat,
                                                                colors.RED, f.mvfrom, colors.OFF,
