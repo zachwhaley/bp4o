@@ -10,7 +10,7 @@ p4() {
     fi
 
     p4bin=$(whence -p p4)
-    if which p4-$cmd[1] &>/dev/null; then
+    if command which p4-$cmd[1] &>/dev/null; then
         p4-$cmd[1] $p4bin $cmd
     else
         $p4bin $cmd
