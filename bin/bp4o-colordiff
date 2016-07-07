@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+export LESS=${LESS-"-FRX"}
+if which colordiff &>/dev/null; then
+    $@ | colordiff | less
+else
+    $@ | less
+fi
+exit $?
