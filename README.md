@@ -20,7 +20,7 @@ BP4O will use [colordiff](http://www.colordiff.org/) to output diffs in color fr
 
 ![colordiff](http://i.imgur.com/5jGjV7K.png)
 
-To get colored diffs, install [colordiff](http://www.colordiff.org/) and unset the P4DIFF environment variable.
+To get colored diffs, install [colordiff](http://www.colordiff.org/) and leave `P4DIFF` unset.
 
 ## Aliases!
 
