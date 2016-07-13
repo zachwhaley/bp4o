@@ -16,9 +16,11 @@ Into this!
 
 ## Colored Diffs!
 
-BP4O will use [colordiff](http://www.colordiff.org/) to output diffs in color from commands like `p4 describe`
+BP4O will use [colordiff](http://www.colordiff.org/) to output diffs in color from commands like `p4 diff` and `p4 describe`
 
 ![colordiff](http://i.imgur.com/5jGjV7K.png)
+
+To get colored diffs, install [colordiff](http://www.colordiff.org/) and unset the P4DIFF environment variable.
 
 ## Aliases!
 
