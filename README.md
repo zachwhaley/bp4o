@@ -6,7 +6,7 @@ A bunch of scripts to catch p4 commands, run them, and make their output better.
 
 ## Better Ouput!
 
-It turns output like this...
+BP4O turns output like this...
 
 ![meh](http://i.imgur.com/euoNBOw.png)
 
