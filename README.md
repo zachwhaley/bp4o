@@ -40,14 +40,25 @@ log = changes -s submitted -l
 
 # How to install it
 
+### Install BP4O in `/usr/local`
+
 ```bash
-# Install BP4O in /usr/local
 sudo ./install.sh
+```
 
-# Install BP4O in your home directory
+Or...
+
+### Install BP4O in your home directory
+
+```bash
 ./install.sh ~
+```
 
-# Install BP4O in some directory
+Or...
+
+### Install BP4O in some directory
+
+```bash
 ./install.sh /some/dir
 ```
 
