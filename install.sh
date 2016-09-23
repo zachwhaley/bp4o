@@ -1,13 +1,21 @@
 #!/usr/bin/env bash
 set -e
 
+if [ "$1" == "-nope" ]; then
+    nope=1
+    shift
+fi
 prefix="/usr/local"
 [ -n "$1" ] && prefix="$1"
 share="$prefix/share/bp4o"
 [ $(whoami) != "root" ] && share="${XDG_DATA_HOME:=$HOME/.local/share}/bp4o"
 
-rm -rf $prefix/bin/p4-*
-rm -rf $share/init.*
+rm -vf $prefix/bin/p4-*
+rm -vf $share/init.*
+if [ -n "$nope" ]; then
+    echo "BP4O Uninstalled!"
+    exit
+fi
 
 mkdir -p $prefix/bin $share
 for b in bin/p4-*; do

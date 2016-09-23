@@ -62,6 +62,28 @@ Or...
 ./install.sh /some/dir
 ```
 
+## How to uninstall it
+
+Use the `-nope` option to uninstall BP4O.
+
+Uninstall from `/usr/local`
+
+```bash
+sudo ./install.sh -nope
+```
+
+Uninstall from your home directory
+
+```bash
+./install.sh -nope ~
+```
+
+Uninstall from some directory
+
+```bash
+./install.sh -nope /some/dir
+```
+
 # How it works
 
 It overrides the p4 command with a shell function named p4.
