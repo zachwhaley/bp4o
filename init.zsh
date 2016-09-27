@@ -4,7 +4,7 @@ p4() {
 
     # Search for and apply aliases from the bp4o aliases file
     local config="${XDG_CONFIG_HOME:=$HOME/.config}/bp4o"
-    local alias=$(sed -n "s/$cmd[1]\s*=\s*\(.\+\)/\1/p" "$config/aliases" 2>/dev/null)
+    local alias=$(awk -F= -v cmd="^$cmd[1] *= *" '$0~cmd {print $2}' $config/aliases 2>/dev/null)
     if [ -n  "$alias" ]; then
         cmd=( ${=cmd/#$cmd[1]/$alias} )
     fi
