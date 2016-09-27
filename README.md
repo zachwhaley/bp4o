@@ -26,7 +26,7 @@ To get colored diffs, install [colordiff](http://www.colordiff.org/) and leave `
 
 BP4O allows you to create aliases for p4 commands
 
-Add a file named `aliases` to `$XDG_CONFIG_HOME/bp4o/` or `~/.config/bp4o/`.
+Add a file named `aliases` to `~/.config/bp4o/` or `$XDG_CONFIG_HOME/bp4o/`.
 Each line of the file is treated as an alias with the syntax `<alias> = <command>`.
 
 e.g.
