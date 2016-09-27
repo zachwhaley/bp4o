@@ -40,7 +40,16 @@ log = changes -s submitted -l
 
 # How to install it
 
-### Install BP4O in `/usr/local`
+## macOS
+
+```bash
+brew tap zachwhaley/beer
+brew install bp4o
+```
+
+## Linux
+
+### Install BP4O on the System
 
 ```bash
 sudo ./install.sh
@@ -64,9 +73,17 @@ Or...
 
 ## How to uninstall it
 
+### macOS
+
+```bash
+brew uninstall bp4o
+```
+
+### Linux
+
 Use the `-nope` option to uninstall BP4O.
 
-Uninstall from `/usr/local`
+Uninstall from the System
 
 ```bash
 sudo ./install.sh -nope
