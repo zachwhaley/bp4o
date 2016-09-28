@@ -15,7 +15,7 @@ WHITE=$'\033[0;37m'
 [ -z "$LESS" ] && LESS=-FRX
 
 if [ -t 1 ]; then
-    $@ | sed -r "s/(^Change [0-9]+.*)/$YELLOW\1$OFF/g" | less
+    $@ | perl -p -e "\$_ =~ s/(^Change [0-9]+.*)/$YELLOW\1$OFF/g" | less
 else
     $@ | less
 fi

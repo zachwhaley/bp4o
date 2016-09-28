@@ -15,9 +15,9 @@ WHITE=$'\033[0;37m'
 [ -z "$LESS" ] && LESS=-FRX
 
 if [ -t 1 ]; then
-    $@ | sed -r -e "s/(^\.\.\. #[0-9]+ change [0-9]+ .+)/$YELLOW\1$OFF/g" \
-                -e "s/(^\.\.\. \.\.\. .+)/$MAGENTA\1$OFF/g" \
-                -e "s!(^//.+)!$BOLD\1$OFF!g" | less
+    $@ | perl -p -e "\$_ =~ s/(^\.\.\. #[0-9]+ change [0-9]+ .+)/$YELLOW\1$OFF/g or
+                     \$_ =~ s/(^\.\.\. \.\.\. .+)/$MAGENTA\1$OFF/g or
+                     \$_ =~ s!(^//.+)!$BOLD\1$OFF!g" | less
 else
     $@ | less
 fi
