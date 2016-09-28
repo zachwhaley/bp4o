@@ -12,8 +12,7 @@ MAGENTA=$'\033[0;35m'
 CYAN=$'\033[0;36m'
 WHITE=$'\033[0;37m'
 
-[ -z "$LESS" ] && LESS=-FRX
-
+export LESS=${LESS-"-FRX"}
 if [ -t 1 ]; then
     $@ | perl -p -e "\$_ =~ s/(^\.\.\. #[0-9]+ change [0-9]+ .+)/$YELLOW\1$OFF/g or
                      \$_ =~ s/(^\.\.\. \.\.\. .+)/$MAGENTA\1$OFF/g or
@@ -21,5 +20,4 @@ if [ -t 1 ]; then
 else
     $@ | less
 fi
-
 exit $?
