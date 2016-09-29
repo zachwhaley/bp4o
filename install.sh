@@ -35,7 +35,7 @@ fi
 init="$share/init.${SHELL##*/}"
 echo "
 BP4O Installed!
-Now add the following to your shell's rc file to setup BP4O on login
+Add the following to your .${SHELL##*/}rc file to setup BP4O:
 
 [ -f $init ] && source $init
 "
