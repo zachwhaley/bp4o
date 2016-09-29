@@ -32,10 +32,11 @@ if [ ${BASH_VERSION%%\.[1-9]*} -ge 4 ]; then
 else
     share="${share/#$HOME/~}"
 fi
-init="$share/init.${SHELL##*/}"
+shell="$(basename $SHELL)"
+init="$share/init.$shell"
 echo "
 BP4O Installed!
-Add the following to your .${SHELL##*/}rc file to setup BP4O:
+Add the following to your .${shell}rc file to setup BP4O:
 
 [ -f $init ] && source $init
 "
