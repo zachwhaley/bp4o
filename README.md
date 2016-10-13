@@ -20,13 +20,13 @@ BP4O will use [colordiff](http://www.colordiff.org/) to output diffs in color fr
 
 ![colordiff](http://i.imgur.com/5jGjV7K.png)
 
-To get colored diffs, install [colordiff](http://www.colordiff.org/) and leave `P4DIFF` unset.
+To get colored diffs, install [colordiff](http://www.colordiff.org/) and unset `P4DIFF`.
 
 ## Aliases!
 
 BP4O allows you to create aliases for p4 commands
 
-Add a file named `aliases` to `~/.config/bp4o/` or `$XDG_CONFIG_HOME/bp4o/`.
+Add a file named `aliases` to `~/.config/bp4o/`.
 Each line of the file is treated as an alias with the syntax `<alias> = <command>`.
 
 e.g.
