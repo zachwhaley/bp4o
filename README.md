@@ -71,34 +71,24 @@ Or...
 ./install.sh /some/dir
 ```
 
-## How to uninstall it
+### Uninstall
 
-### macOS
+Use the `-u` option in `install.sh` to uninstall BP4O
 
 ```bash
-brew uninstall bp4o
+./install.sh -u ~
 ```
 
-### Linux
+### Zsh Users
 
-Use the `-nope` option to uninstall BP4O.
-
-Uninstall from the System
-
-```bash
-sudo ./install.sh -nope
-```
-
-Uninstall from your home directory
+For a root installation to work, depending on your distro,
+you might need to source the BP4O init script in `/etc/profile.d/`
 
 ```bash
-./install.sh -nope ~
-```
-
-Uninstall from some directory
-
-```bash
-./install.sh -nope /some/dir
+# ~/.zshrc
+if [ -f /etc/profile.d/bp4o.zsh ]; then
+    source /etc/profile.d/bp4o.zsh
+fi
 ```
 
 # How it works
