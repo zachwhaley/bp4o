@@ -24,10 +24,12 @@ To get colored diffs, install [colordiff](http://www.colordiff.org/) and unset `
 
 ## Aliases!
 
-BP4O allows you to create aliases for p4 commands
+BP4O works with most basic [Perforce aliases](https://www.perforce.com/perforce/r16.1/manuals/cmdref/chapter.introduction.html#introduction.aliases)!
+
+BP4O also provides its own aliasing for p4 clients that don't support Perforce aliases:
 
 Add a file named `aliases` to `~/.config/bp4o/`.
-Each line of the file is treated as an alias with the syntax `<alias> = <command>`.
+Each line of `~/.config/bp4o/aliases` is treated as an alias with the syntax `<alias> = <command>`.
 
 e.g.
 
