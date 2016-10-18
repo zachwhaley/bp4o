@@ -49,6 +49,14 @@ brew tap zachwhaley/beer
 brew install bp4o
 ```
 
+## Ubuntu
+
+```shell
+sudo add-apt-repository ppa:zachwhaley/ppa
+sudo apt update
+sudo apt install bp4o
+```
+
 ## Linux
 
 ### Install BP4O on the System
@@ -81,7 +89,7 @@ Use the `-u` option in `install.sh` to uninstall BP4O
 ./install.sh -u ~
 ```
 
-### Zsh Users
+## Zsh Users
 
 For a root installation to work, depending on your distro,
 you might need to source the BP4O init script in `/etc/profile.d/`
