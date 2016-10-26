@@ -7,7 +7,7 @@ p4() {
     local bp4oaliases=${XDG_CONFIG_HOME:-$HOME/.config}/bp4o/aliases
     if [ ${P4VERSION%.*} -ge 2016 ] && [ -f $p4aliases ]; then
         # Search for and apply aliases from Perforce
-        local p4cmd=$(perl -n -e "print if \$_ =~ s/^$args\s*.*=\s*(\w+).*/\1/" $p4aliases)
+        local p4cmd=$(perl -n -e "print if \$_ =~ s/^$args\b.*=\s*(\w+).*/\1/" $p4aliases)
         if [ -n "$p4cmd" ]; then
             cmd=$p4cmd
         fi
