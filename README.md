@@ -44,7 +44,7 @@ log = changes -s submitted -l
 
 ## macOS
 
-```bash
+```shell
 brew tap zachwhaley/beer
 brew install bp4o
 ```
@@ -64,11 +64,13 @@ sudo dnf copr enable zachwhaley/bp4o
 sudo dnf install bp4o
 ```
 
-## Linux
+## Others
+
+Use the `install.sh` script to install BP4O
 
 ### Install BP4O on the System
 
-```bash
+```shell
 sudo ./install.sh
 ```
 
@@ -76,7 +78,7 @@ Or...
 
 ### Install BP4O in your home directory
 
-```bash
+```shell
 ./install.sh ~
 ```
 
@@ -84,7 +86,7 @@ Or...
 
 ### Install BP4O in some directory
 
-```bash
+```shell
 ./install.sh /some/dir
 ```
 
@@ -92,17 +94,18 @@ Or...
 
 Use the `-u` option in `install.sh` to uninstall BP4O
 
-```bash
+```shell
 ./install.sh -u ~
 ```
 
 ## Zsh Users
 
-For a root installation to work, depending on your distro,
+For a system installation to work, depending on your distro,
 you might need to source the BP4O init script in `/etc/profile.d/`
 
-```bash
-# ~/.zshrc
+Add this to your `/.zprofile`:
+
+```shell
 if [ -f /etc/profile.d/bp4o.zsh ]; then
     source /etc/profile.d/bp4o.zsh
 fi
