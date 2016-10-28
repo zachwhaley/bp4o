@@ -57,6 +57,13 @@ sudo apt update
 sudo apt install bp4o
 ```
 
+## Fedora
+
+```shell
+sudo dnf copr enable zachwhaley/bp4o
+sudo dnf install bp4o
+```
+
 ## Linux
 
 ### Install BP4O on the System
