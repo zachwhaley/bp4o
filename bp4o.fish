@@ -16,12 +16,8 @@ function p4
         # Search for and apply aliases from BP4O
         set alias (perl -n -e "print if \$_ =~ s/$args[1]\s*=\s*(.+)/\1/" $bp4oaliases)
         if test -n "$alias"
-            set alias (string split " " $alias)
-            if test (count $args) -gt 1
-                set args $alias $args[2..-1]
-            else
-                set args $alias
-            end
+            set args (string replace "$args[1]" "$alias" "$args")
+            set args (string split " " $args)
             set cmd $args[1]
         end
     end
