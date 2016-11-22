@@ -100,15 +100,11 @@ Use the `-u` option in `install.sh` to uninstall BP4O
 
 ## Zsh Users
 
-For a system installation to work, depending on your distro,
-you might need to source the BP4O init script in `/etc/profile.d/`
-
-Add this to your `~/.zprofile`:
+Load the BP4O Zsh function by adding this to your `~/.zshrc`:
 
 ```shell
-if [ -f /etc/profile.d/bp4o.zsh ]; then
-    source /etc/profile.d/bp4o.zsh
-fi
+autoload -Uz bp4o
+bp4o
 ```
 
 # How it works
