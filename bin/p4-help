@@ -70,6 +70,8 @@ else
         When a p4 command is issued, this function looks for executables in your PATH named p4-command.
         It then gives the command line arguments to this executable, which runs the p4 command, parses the output, and prints better output.
 
+    BP4O Version 0.3.3
+
 EOM
 exit 0
 fi
