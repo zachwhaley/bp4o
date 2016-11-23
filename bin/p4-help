@@ -71,6 +71,7 @@ else
         It then gives the command line arguments to this executable, which runs the p4 command, parses the output, and prints better output.
 
     BP4O Version 0.3.3
+    Copyright 2016 Zach Whaley <zachbwhaley@gmail.com>
 
 EOM
 exit 0
