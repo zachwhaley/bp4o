@@ -7,15 +7,16 @@ if [ "$1" == "-u" ]; then
 fi
 
 if [ $(whoami) == "root" ]; then
-    bashdir="/etc/profile.d"
-    zshdir="/usr/share/zsh/site-functions"
-    fishdir="/usr/share/fish/vendor_functions.d"
+    prefix="${1:-/usr/local}"
+    bashdir="$prefix/etc/profile.d"
+    zshdir="$prefix/share/zsh/site-functions"
+    fishdir="$prefix/share/fish/vendor_functions.d"
 else
-    bashdir="$HOME/.profile.d"
-    zshdir="$HOME/.local/share/zsh/functions"
-    fishdir="$HOME/.config/fish/functions"
+    prefix="${1:-$HOME}"
+    bashdir="$prefix/.local/etc/profile.d"
+    zshdir="$prefix/.local/share/zsh/functions"
+    fishdir="$prefix/.config/fish/functions"
 fi
-prefix="${1:-/usr/local}"
 
 uninstall() {
     local opts=$1
@@ -28,8 +29,9 @@ uninstall() {
 # Uninstall BP4O
 if [ -n "$nope" ]; then
     uninstall -vf
-echo "
-BP4O Uninstalled!"
+cat <<EOM
+BP4O Uninstalled!
+EOM
     exit
 fi
 
@@ -46,44 +48,35 @@ install -v -p -m 444 bp4o.bash $bashdir/bp4o.sh
 install -v -p -m 444 bp4o.zsh $zshdir/bp4o
 install -v -p -m 444 bp4o.fish $fishdir/p4.fish
 
-echo "
-BP4O Installed!"
-shell="$(basename $SHELL)"
-if [ $(whoami) == "root" ]; then
-cat <<EOM
-
-Zsh users, add the following to your ~/.zshrc:
-
-    autoload -Uz bp4o
-    bp4o
-
-Bash users, you're ready to go!
-Fish users, you're ready to go!
-
-EOM
-else
 # Bash 4 expands ~ to the home directory, but Bash 3 doesn't.
 # Unfortunately Bash 3 prints '~' literally, while Bash 4 prints only ~
 if [ ${BASH_VERSION%%\.[1-9]*} -ge 4 ]; then
     bashdir="${bashdir/#$HOME/'~'}"
     zshdir="${zshdir/#$HOME/'~'}"
+    fishdir="${zshdir/#$HOME/'~'}"
 else
     bashdir="${bashdir/#$HOME/~}"
     zshdir="${zshdir/#$HOME/~}"
+    fishdir="${zshdir/#$HOME/~}"
 fi
 cat <<EOM
 
+BP4O Installed!
+
 Bash users, add the following to your ~/.bashrc:
 
-    [ -f $bashdir/bp4o.sh ] && . $bashdir/bp4o.sh
+  if [ -f $bashdir/bp4o.sh ]; then
+    . $bashdir/bp4o.sh
+  fi
 
 Zsh users, add the following to your ~/.zshrc:
 
-    fpath=( $zshdir \$fpath )
-    autoload -Uz bp4o
-    bp4o
+  fpath=( $zshdir \$fpath )
+  autoload -Uz bp4o
+  bp4o
 
-Fish users, you're ready to go!
+Fish users, add this to your ~/.config/fish/config.fish:
+
+  set fish_function_path $fishdir \$fish_function_path
 
 EOM
-fi
