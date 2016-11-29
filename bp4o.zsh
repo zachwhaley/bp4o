@@ -1,8 +1,8 @@
 export P4VERSION=$(command p4 -V | awk -F/ '/Rev. P4/ {print $3}')
 p4() {
-    typeset -a args
-    local args=( $@ )
-    local cmd=$args[1]
+    local args cmd
+    args=( $@ )
+    cmd=$args[1]
 
     local p4aliases=$HOME/.p4aliases
     local bp4oaliases=${XDG_CONFIG_HOME:-$HOME/.config}/bp4o/aliases
