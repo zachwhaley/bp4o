@@ -43,6 +43,8 @@ for arg in sys.argv:
 child = subprocess.Popen(args[1:], stdout=subprocess.PIPE)
 (out, err) = child.communicate()
 if child.returncode != 0:
+    if out:
+        sys.stdout.write(out)
     sys.exit(child.returncode)
 
 # Turn off colors if stdout is being piped or redirected
