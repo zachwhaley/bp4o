@@ -74,15 +74,9 @@ Zsh users, add the following to your ~/.zshrc:
   fpath=( $zshdir \$fpath )
   autoload -Uz bp4o
   bp4o
-EOM
-
-if [ "$fishdir" != "~/.config/fish/functions" ] &&
-   [ "$fishdir" != "/usr/local/share/fish/vendor_functions.d" ]; then
-cat <<EOM
 
 Fish users, add this to your ~/.config/fish/config.fish:
 
   set fish_function_path $fishdir \$fish_function_path
 
 EOM
-fi
