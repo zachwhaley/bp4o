@@ -3,8 +3,8 @@ p4() {
     local args=( $@ )
     local cmd=$args
 
-    local p4aliases=$HOME/.p4aliases
-    local bp4oaliases=$HOME/.config/bp4o/aliases
+    local p4aliases=${P4ALIASES:-$HOME}/.p4aliases
+    local bp4oaliases=${BP4OALIASES:-$HOME/.config/bp4o/aliases}
     if [ ${P4VERSION%.*} -ge 2016 ] && [ -f $p4aliases ]; then
         # Search for and apply aliases from Perforce
         local p4cmd=$(perl -n -e "print if \$_ =~ s/^$args\b.*=\s*(\w+).*/\1/" $p4aliases)

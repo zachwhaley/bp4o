@@ -3,8 +3,16 @@ function p4
     set args $argv
     set cmd $args[1]
 
-    set p4aliases $HOME/.p4aliases
-    set bp4oaliases $HOME/.config/bp4o/aliases
+    set -l p4aliases $HOME/.p4aliases
+    if set -q P4ALIASES
+        set p4aliases $P4ALIASES/.p4aliases
+    end
+
+    set -l bp4oaliases $HOME/.config/bp4o/aliases
+    if set -q BP4OALIASES
+        set bp4oaliases $BP4OALIASES
+    end
+
     set p4v (string split . $P4VERSION)
     if test $p4v[1] -ge 2016; and test -f $p4aliases
         # Search for and apply aliases from Perforce
