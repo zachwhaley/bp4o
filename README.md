@@ -33,7 +33,7 @@ Each line of `~/.config/bp4o/aliases` is treated as an alias with the syntax `<a
 
 e.g.
 
-```shell
+```
 ch = change
 op = opened
 su = submit
@@ -44,14 +44,14 @@ log = changes -s submitted -l
 
 ## macOS
 
-```shell
+```
 brew tap zachwhaley/beer
 brew install bp4o
 ```
 
 ## Ubuntu
 
-```shell
+```
 sudo add-apt-repository ppa:zachwhaley/ppa
 sudo apt update
 sudo apt install bp4o
@@ -59,7 +59,7 @@ sudo apt install bp4o
 
 ## Fedora
 
-```shell
+```
 sudo dnf copr enable zachwhaley/bp4o
 sudo dnf install bp4o
 ```
@@ -70,7 +70,7 @@ Use the `install.sh` script to install BP4O
 
 ### Install BP4O on the System
 
-```shell
+```
 sudo ./install.sh
 ```
 
@@ -78,7 +78,7 @@ Or...
 
 ### Install BP4O in your home directory
 
-```shell
+```
 ./install.sh ~
 ```
 
@@ -86,7 +86,7 @@ Or...
 
 ### Install BP4O in some directory
 
-```shell
+```
 ./install.sh /some/dir
 ```
 
@@ -94,7 +94,7 @@ Or...
 
 Use the `-u` option in `install.sh` to uninstall BP4O
 
-```shell
+```
 ./install.sh -u ~
 ```
 
@@ -102,7 +102,7 @@ Use the `-u` option in `install.sh` to uninstall BP4O
 
 Load the BP4O Zsh function by adding this to your `~/.zshrc`:
 
-```shell
+```
 autoload -Uz bp4o
 bp4o
 ```
