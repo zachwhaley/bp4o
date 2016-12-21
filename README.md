@@ -6,19 +6,11 @@ A bunch of scripts to catch p4 commands, run them, and make their output better.
 
 ## Better Ouput!
 
-BP4O turns output like this...
-
-![meh](http://i.imgur.com/euoNBOw.png)
-
-Into this!
-
-![WOW](http://i.imgur.com/atCFBp6.png)
+[![asciicast](https://asciinema.org/a/4ylq3yki49226ezargnm62iel.png)](https://asciinema.org/a/4ylq3yki49226ezargnm62iel)
 
 ## Colored Diffs!
 
 BP4O will use [colordiff](http://www.colordiff.org/) to output diffs in color from commands like `p4 diff` and `p4 describe`
-
-![colordiff](http://i.imgur.com/5jGjV7K.png)
 
 To get colored diffs, install [colordiff](http://www.colordiff.org/) and unset `P4DIFF`.
 
