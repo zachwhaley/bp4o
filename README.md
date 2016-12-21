@@ -2,19 +2,15 @@
 
 A bunch of scripts to catch p4 commands, run them, and make their output better.
 
-# What it does
-
-## Better Ouput!
-
 [![asciicast](https://asciinema.org/a/4ylq3yki49226ezargnm62iel.png)](https://asciinema.org/a/4ylq3yki49226ezargnm62iel)
 
-## Colored Diffs!
+# Colored Diffs!
 
 BP4O will use [colordiff](http://www.colordiff.org/) to output diffs in color from commands like `p4 diff` and `p4 describe`
 
 To get colored diffs, install [colordiff](http://www.colordiff.org/) and unset `P4DIFF`.
 
-## Aliases!
+# Aliases!
 
 BP4O works with most basic [Perforce aliases](https://www.perforce.com/perforce/r16.1/manuals/cmdref/chapter.introduction.html#introduction.aliases)!
 
