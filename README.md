@@ -2,7 +2,7 @@
 
 A bunch of scripts to catch p4 commands, run them, and make their output better.
 
-[![asciicast](https://asciinema.org/a/4ylq3yki49226ezargnm62iel.png)](https://asciinema.org/a/4ylq3yki49226ezargnm62iel)
+[![asciicast](https://asciinema.org/a/96884.png)](https://asciinema.org/a/96884)
 
 # Colored Diffs!
 
