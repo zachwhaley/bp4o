@@ -12,11 +12,11 @@ To get colored diffs, install [colordiff](http://www.colordiff.org/) and unset `
 
 # Aliases!
 
-BP4O works with most basic [Perforce aliases](https://www.perforce.com/perforce/r16.1/manuals/cmdref/chapter.introduction.html#introduction.aliases)!
+BP4O works with Perforce's builtin [aliasing](https://www.perforce.com/perforce/r16.1/manuals/cmdref/chapter.introduction.html#introduction.aliases)!
 
-BP4O also provides its own aliasing for p4 clients that don't support Perforce aliases:
+And BP4O provides its own aliasing:
 
-Add a file named `aliases` to `~/.config/bp4o/`.
+To use BP4O aliases, add a file named `aliases` to `~/.config/bp4o/`.
 Each line of `~/.config/bp4o/aliases` is treated as an alias with the syntax `<alias> = <command>`.
 
 e.g.
@@ -45,14 +45,14 @@ sudo apt update
 sudo apt install bp4o
 ```
 
-## Fedora
+## Fedora/CentOS
 
 ```
 sudo dnf copr enable zachwhaley/bp4o
 sudo dnf install bp4o
 ```
 
-## Others
+## Manually
 
 Use the `install.sh` script to install BP4O
 
