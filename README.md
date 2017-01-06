@@ -30,6 +30,17 @@ log = changes -s submitted -l
 
 # How to install it
 
+BP4O works with Bash, Zsh, and Fish shell
+
+## Zsh Users
+
+After installing, add this to your `~/.zshrc`:
+
+```
+autoload -Uz bp4o
+bp4o
+```
+
 ## macOS
 
 ```
@@ -84,15 +95,6 @@ Use the `-u` option in `install.sh` to uninstall BP4O
 
 ```
 ./install.sh -u ~
-```
-
-## Zsh Users
-
-Load the BP4O Zsh function by adding this to your `~/.zshrc`:
-
-```
-autoload -Uz bp4o
-bp4o
 ```
 
 # How it works
