@@ -8,7 +8,7 @@ A bunch of scripts to catch p4 commands, run them, and make their output better.
 
 BP4O will use [colordiff](http://www.colordiff.org/) to output diffs in color from commands like `p4 diff` and `p4 describe`
 
-To get colored diffs, install [colordiff](http://www.colordiff.org/) and unset `P4DIFF`.
+To get colored diffs, install [colordiff](http://www.colordiff.org/) and unset the `P4DIFF` environment variable.
 
 # Aliases!
 
