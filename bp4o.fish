@@ -13,7 +13,7 @@ function p4
         set bp4oaliases $BP4OALIASES
     end
 
-    set -l p4year (string split . $P4VERSION)
+    set -l p4year (string split -- "." "$P4VERSION")
 
     if test $p4year[1] -ge 2016; and test -f $p4aliases
         # Search for and apply aliases from Perforce
@@ -24,9 +24,9 @@ function p4
     else if test -f $bp4oaliases
         # Search for and apply aliases from BP4O
         set -l alias (perl -n -e "print if \$_ =~ s/$args[1]\s*=\s*(.+)/\1/" $bp4oaliases)
-        if test -n $alias
-            set args (string replace "$args[1]" "$alias" "$args")
-            set args (string split " " $args)
+        if test -n "$alias"
+            set args (string replace -- "$args[1]" "$alias" "$args")
+            set args (string split -- " " "$args")
             set cmd $args[1]
         end
     end
