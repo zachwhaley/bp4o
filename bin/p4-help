@@ -46,15 +46,15 @@ else
 
         BP4O will use colordiff (http://www.colordiff.org/) to output diffs in color from commands like 'p4 diff' and 'p4 describe'
 
-        To get colored diffs, install colordiff and unset 'P4DIFF'.
+        To get colored diffs, install colordiff and unset the 'P4DIFF' environment variable.
 
         ${BOLD}Aliases${OFF}
 
-        BP4O works with most basic Perforce aliases!
+        BP4O works with Perforce's builtin aliasing!
 
-        BP4O also provides its own aliasing for p4 clients that don't support Perforce aliases:
+        And BP4O provides its own aliasing!
 
-        Add a file named 'aliases' to '~/.config/bp4o/'.
+        To use BP4O 'aliases', add a file named aliases to '~/.config/bp4o/'.
         Each line of '~/.config/bp4o/aliases' is treated as an alias with the syntax '<alias> = <command>'.
 
         e.g.

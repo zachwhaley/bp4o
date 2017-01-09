@@ -14,7 +14,7 @@ To get colored diffs, install [colordiff](http://www.colordiff.org/) and unset t
 
 BP4O works with Perforce's builtin [aliasing](https://www.perforce.com/perforce/r16.1/manuals/cmdref/chapter.introduction.html#introduction.aliases)!
 
-And BP4O provides its own aliasing:
+And BP4O provides its own aliasing!
 
 To use BP4O aliases, add a file named `aliases` to `~/.config/bp4o/`.
 Each line of `~/.config/bp4o/aliases` is treated as an alias with the syntax `<alias> = <command>`.
