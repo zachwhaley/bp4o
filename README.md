@@ -1,5 +1,7 @@
 # Better P4 Output
 
+[![Build Status](https://travis-ci.org/zachwhaley/bp4o.svg?branch=master)](https://travis-ci.org/zachwhaley/bp4o)
+
 A bunch of scripts to catch p4 commands, run them, and make their output better.
 
 [![asciicast](https://asciinema.org/a/96884.png)](https://asciinema.org/a/96884)
