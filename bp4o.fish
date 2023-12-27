@@ -32,7 +32,7 @@ function p4
     end
 
     set -l p4bin (type -P p4)
-    if command which p4-$cmd > /dev/null ^&1
+    if command which p4-$cmd > /dev/null >&1
         eval p4-$cmd $p4bin $args
     else
         eval $p4bin $args
