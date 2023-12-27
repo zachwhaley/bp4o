@@ -39,7 +39,7 @@ args = []
 for arg in sys.argv:
     args += arg.split()
 
-child = subprocess.Popen(args[1:], stdout=subprocess.PIPE)
+child = subprocess.Popen(args[1:], stdout=subprocess.PIPE, text=True)
 (out, err) = child.communicate()
 if child.returncode != 0:
     if out:
@@ -67,11 +67,11 @@ for line in out.split('\n'):
         if mv:
             opened['move'][-1].mvfrom = mv.group(1)
         else:
-            print line
+            print(line)
 
 if opened:
-    for stat, files in opened.iteritems():
-        print '\nOpened for {}'.format(stat)
+    for stat, files in list(opened.items()):
+        print(('\nOpened for {}'.format(stat)))
         color = colors.OFF
         if 'edit' in stat:
             color = colors.YELLOW
@@ -81,9 +81,9 @@ if opened:
             color = colors.RED
         for f in files:
             if f.mvfrom:
-                print '\t{}{}{} -> {}{}{}'.format(colors.RED, f.mvfrom, colors.OFF, colors.GREEN, f.name, colors.OFF)
+                print(('\t{}{}{} -> {}{}{}'.format(colors.RED, f.mvfrom, colors.OFF, colors.GREEN, f.name, colors.OFF)))
             else:
-                print '\t{}{}{}'.format(color, f.name, colors.OFF)
-    print ''
+                print(('\t{}{}{}'.format(color, f.name, colors.OFF)))
+    print('')
 
 sys.exit(child.returncode)

@@ -34,7 +34,7 @@ args = []
 for arg in sys.argv:
     args += arg.split()
 
-child = subprocess.Popen(args[1:], stdout=subprocess.PIPE)
+child = subprocess.Popen(args[1:], stdout=subprocess.PIPE, text=True)
 (out, err) = child.communicate()
 if child.returncode != 0:
     if out:
@@ -54,11 +54,11 @@ for line in out.split('\n'):
             reverts[rv] = []
         reverts[rv].append( (m.group(1), m.group(2)) )
     elif line:
-        print line
+        print(line)
 
 if reverts:
-    for rv, files in reverts.iteritems():
-        print '\n{}'.format(rv.title())
+    for rv, files in reverts.items():
+        print('\n{}'.format(rv.title()))
         statlen = 0
         for (name, stat) in files:
             statlen = max(statlen, len(stat))
@@ -70,7 +70,7 @@ if reverts:
                 color = colors.GREEN
             elif 'delete' in stat:
                 color = colors.RED
-            print '\t{}{: <{statlen}} {}{}'.format(color, stat, name, colors.OFF, statlen=statlen)
-    print ''
+            print('\t{}{: <{statlen}} {}{}'.format(color, stat, name, colors.OFF, statlen=statlen))
+    print('')
 
 sys.exit(child.returncode)
