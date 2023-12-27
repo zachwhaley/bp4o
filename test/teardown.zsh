@@ -1,4 +1,4 @@
 # Teardown zsh
-local cwd=$(git rev-parse --show-toplevel)
+local cwd=$(pwd)
 
 rm -r $cwd/.zfunc
