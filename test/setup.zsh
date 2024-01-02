@@ -1,5 +1,5 @@
 # Setup zsh
-local cwd=$(git rev-parse --show-toplevel)
+local cwd=$(pwd)
 path=($cwd/test $path); export path
 fpath=($cwd/.zfunc $fpath); export fpath
 export P4ALIASES=$cwd

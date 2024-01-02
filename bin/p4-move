@@ -34,7 +34,7 @@ args = []
 for arg in sys.argv:
     args += arg.split()
 
-child = subprocess.Popen(args[1:], stdout=subprocess.PIPE)
+child = subprocess.Popen(args[1:], stdout=subprocess.PIPE, text=True)
 (out, err) = child.communicate()
 if child.returncode != 0:
     if out:
@@ -51,12 +51,12 @@ for line in out.split('\n'):
     if m:
         move.append(m.groups())
     elif line:
-        print line
+        print(line)
 
 if move:
-    print '\nOpened for move'
+    print('\nOpened for move')
     for (mvto, mvfrom) in move:
-        print '\t{}{}{} -> {}{}{}'.format(colors.RED, mvfrom, colors.OFF, colors.GREEN, mvto, colors.OFF)
-    print ''
+        print('\t{}{}{} -> {}{}{}'.format(colors.RED, mvfrom, colors.OFF, colors.GREEN, mvto, colors.OFF))
+    print('')
 
 sys.exit(child.returncode)

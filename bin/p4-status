@@ -42,7 +42,7 @@ args = []
 for arg in sys.argv:
     args += arg.split()
 
-child = subprocess.Popen(args[1:], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+child = subprocess.Popen(args[1:], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 (out, err) = child.communicate()
 if not out:
     sys.stderr.write(err)
@@ -81,7 +81,7 @@ for line in out.split('\n'):
         if m:
             unopened[-1].mvfrom = m.group(1)
         else:
-            print line
+            print(line)
 
 def print_files(files):
     statlen = 0
@@ -100,21 +100,21 @@ def print_files(files):
         elif 'integrate' in f.stat:
             color = colors.CYAN
         if f.mvfrom:
-            print '\t{}{: <{statlen}} {}{}{} -> {}{}{}'.format(colors.YELLOW, f.stat,
+            print('\t{}{: <{statlen}} {}{}{} -> {}{}{}'.format(colors.YELLOW, f.stat,
                                                                colors.RED, f.mvfrom, colors.OFF,
                                                                colors.GREEN, f.name, colors.OFF,
-                                                               statlen=statlen)
+                                                               statlen=statlen))
         else:
-            print '\t{}{: <{statlen}} {}{}'.format(color, f.stat, f.name, colors.OFF, statlen=statlen)
+            print('\t{}{: <{statlen}} {}{}'.format(color, f.stat, f.name, colors.OFF, statlen=statlen))
 
 if opened:
-    for chnum, files in opened.iteritems():
-        print '\n{}[ {} ]{}'.format(colors.BOLD, chnum, colors.OFF)
+    for chnum, files in opened.items():
+        print('\n{}[ {} ]{}'.format(colors.BOLD, chnum, colors.OFF))
         print_files(files)
 if unopened:
-    print '\n{}[ unopened ]{}'.format(colors.REDBOLD, colors.OFF)
+    print('\n{}[ unopened ]{}'.format(colors.REDBOLD, colors.OFF))
     print_files(unopened)
 if unopened or opened:
-    print ''
+    print('')
 
 sys.exit(child.returncode)

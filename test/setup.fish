@@ -1,5 +1,5 @@
 # Setup fish
-set -l cwd (git rev-parse --show-toplevel)
+set -l cwd (pwd)
 set -x PATH $cwd/test $PATH
 set -x fish_function_path $cwd/.fish $fish_function_path
 set -x P4ALIASES $cwd

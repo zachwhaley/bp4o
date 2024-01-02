@@ -5,7 +5,8 @@ BOLD=$'\033[0;1m'
 RED=$'\033[0;31m'
 GREEN=$'\033[0;32m'
 
-cwd=$(git rev-parse --show-toplevel)
+cwd=$(realpath $(dirname $0))
+cd $cwd
 P4ALIASES=$cwd
 BP4OALIASES=$cwd/bp4oaliases
 

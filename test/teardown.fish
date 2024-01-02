@@ -1,4 +1,4 @@
 # Teardown fish
-set -l cwd (git rev-parse --show-toplevel)
+set -l cwd (pwd)
 
 rm -r $cwd/.fish
