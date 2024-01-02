@@ -1,6 +1,6 @@
 # Better P4 Output
 
-[![Build Status](https://travis-ci.org/zachwhaley/bp4o.svg?branch=master)](https://travis-ci.org/zachwhaley/bp4o)
+[![Checks](https://github.com/zachwhaley/bp4o/actions/workflows/checks.yml/badge.svg)](https://github.com/zachwhaley/bp4o/actions/workflows/checks.yml)
 
 A bunch of scripts to catch p4 commands, run them, and make their output better.
 
