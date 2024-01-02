@@ -1,0 +1,29 @@
+name: Checks
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+    - name: Install dependencies
+      run: |
+        wget -qO - https://package.perforce.com/perforce.pubkey | gpg --dearmor | sudo tee /usr/share/keyrings/perforce.gpg > /dev/null
+        echo "deb [signed-by=/usr/share/keyrings/perforce.gpg] https://package.perforce.com/apt/ubuntu  $(lsb_release -sc)  release" | sudo tee /etc/apt/sources.list.d/perforce.list
+        sudo apt-add-repository ppa:fish-shell/release-3
+        sudo apt-get update -qq
+        sudo apt-get install -y zsh fish helix-cli
+    - name: Install BP4O
+      run: |
+        sudo ./install.sh
+    - name: Test BP4O
+      run: |
+        ./test.sh
