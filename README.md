@@ -34,35 +34,11 @@ log = changes -s submitted -l
 
 BP4O works with Bash, Zsh, and Fish shell
 
-## Zsh Users
-
-After installing, add this to your `~/.zshrc`:
-
-```
-autoload -Uz bp4o
-bp4o
-```
-
 ## macOS
 
 ```
 brew tap zachwhaley/beer
 brew install bp4o
-```
-
-## Ubuntu
-
-```
-sudo add-apt-repository ppa:zachwhaley/ppa
-sudo apt update
-sudo apt install bp4o
-```
-
-## Fedora/CentOS
-
-```
-sudo dnf copr enable zachwhaley/bp4o
-sudo dnf install bp4o
 ```
 
 ## Manually
@@ -96,7 +72,7 @@ Or...
 Use the `-u` option in `install.sh` to uninstall BP4O
 
 ```
-./install.sh -u ~
+./install.sh -u <install directory>
 ```
 
 # How it works
